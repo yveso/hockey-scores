@@ -17,7 +17,6 @@ def current_gameday(players: list[int]) -> pd.DataFrame:
 
         if i == 0:
             header_row = result_table.find("thead").find("tr")
-
             actual_scores = [
                 score.get_text()
                 for score in header_row.find_all(
@@ -42,8 +41,6 @@ def current_gameday(players: list[int]) -> pd.DataFrame:
                     scores.append(text)
             else:
                 scores.append(td.get_text())
-        print(scores)
-        print(len(scores))
         player_scores.append(scores)
 
     current_df_column_names = ["Position", "Veränderung", "Name"]
@@ -51,8 +48,7 @@ def current_gameday(players: list[int]) -> pd.DataFrame:
         s[:3] + "-" + s[3:6] + " " + s[6:] for s in actual_scores
     )
     current_df_column_names.extend(["Punkte", "Bonus", "Tagessiege", "Gesamtpunkte"])
-    print(current_df_column_names)
-    print(len(current_df_column_names))
+
     return pd.DataFrame(player_scores, columns=current_df_column_names).sort_values(
         by="Gesamtpunkte", ascending=False
     )
