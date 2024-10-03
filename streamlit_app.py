@@ -14,7 +14,7 @@ with st.status("Daten herunterladen..."):
     current_gameday_df = current_gameday(players)
     st.write("✅ Aktueller Spieltag")
     points_per_gameday_df = total_scores(players=players, view="spieltagspunkte")
-    st.write("✅ Spieltagspunkte")
+    st.write("✅ Punkte pro Spieltag")
     placement_per_gameday_df = total_scores(players=players, view="platzierungen")
     st.write("✅ Platzierung pro Spieltag")
 
