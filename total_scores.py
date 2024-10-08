@@ -12,8 +12,8 @@ def total_scores(players: list[int], view: str) -> pd.DataFrame:
         soup = BeautifulSoup(response.content, "lxml")
 
         player_row = soup.find("table", id="ranking").find("tr", class_="treffer")
-        game_days = player_row.find_all("td", class_="spieltag")
         name = player_row.find_all("td")[1].get_text()
+        game_days = player_row.find_all("td", class_="spieltag")
         points = [
             int(c) if c else None for c in (cell.get_text() for cell in game_days)
         ]
