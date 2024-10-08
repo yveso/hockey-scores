@@ -18,12 +18,12 @@ with st.status("Daten herunterladen..."):
     gameday_placement_df = total_scores(players=players, view="spieltagsplatzierungen")
     st.write("✅ Spieltagsplatzierungen")
     placement_per_gameday_df = total_scores(players=players, view="platzierungen")
-    st.write("✅ Platzierung pro Spieltag")
+    st.write("✅ Gesamtplatzierungen")
 
 st.subheader("Aktueller Spieltag", anchor=False)
 st.dataframe(current_gameday_df, hide_index=True)
 
-st.subheader("Punkte pro Spieltag", anchor=False)
+st.subheader("Spieltagspunkte", anchor=False)
 points_per_gameday_df = points_per_gameday_df_orig.reset_index().melt(
     "Spieltag", var_name="Name", value_name="Punkte"
 )
@@ -61,7 +61,7 @@ points_per_gameday_chart = (
 )
 st.altair_chart(points_per_gameday_chart, use_container_width=True)
 
-st.subheader("Platzierung pro Spieltag", anchor=False)
+st.subheader("Gesamtplatzierung", anchor=False)
 placement_per_gameday_df = placement_per_gameday_df.reset_index().melt(
     "Spieltag", var_name="Name", value_name="Platzierung"
 )
