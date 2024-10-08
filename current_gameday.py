@@ -30,7 +30,13 @@ def current_gameday(players: list[int]) -> pd.DataFrame:
             if i == 0:  # Platzierung
                 scores.append(td.get_text()[:-1])
             elif i == 1:  # Positionsveränderung
-                trend = "🔼" if "position-icon-up" in td.get("class", []) else "🔽"
+                classes = td.get("class", [])
+                if "position-icon-up" in classes:
+                    trend = "🔼"
+                elif "position-icon-down" in classes:
+                    trend = "🔽"
+                else:
+                    trend = "⏹"
                 scores.append(trend + " " + td.get_text())
             elif 3 <= i <= 9:  # Spiele
                 text = td.get_text()
