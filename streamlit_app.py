@@ -29,7 +29,7 @@ points_per_gameday_df = points_per_gameday_df_orig.reset_index().melt(
 )
 points_per_gameday_chart = (
     alt.Chart(points_per_gameday_df)
-    .mark_line(interpolate="basis")
+    .mark_line()
     .encode(x="Spieltag:Q", y="Punkte:Q", color="Name:N")
 )
 st.altair_chart(points_per_gameday_chart, use_container_width=True)
@@ -40,7 +40,7 @@ gameday_placement_df = gameday_placement_df.reset_index().melt(
 )
 gameday_placement_chart = (
     alt.Chart(gameday_placement_df)
-    .mark_line(interpolate="basis")
+    .mark_line()
     .encode(
         x="Spieltag:Q",
         y=alt.Y("Spieltagsplatzierung:Q", scale=alt.Scale(reverse=True)),
@@ -56,14 +56,14 @@ total_points_per_gameday_df = total_points_per_gameday_df.reset_index().melt(
 )
 points_per_gameday_chart = (
     alt.Chart(total_points_per_gameday_df)
-    .mark_line(interpolate="basis")
+    .mark_line()
     .encode(x="Spieltag:Q", y="Punkte:Q", color="Name:N")
 )
 st.altair_chart(points_per_gameday_chart, use_container_width=True)
 st.subheader("Gesamtpunkte (Log Scale)", anchor=False)
 points_per_gameday_chart = (
     alt.Chart(total_points_per_gameday_df)
-    .mark_line(interpolate="basis")
+    .mark_line()
     .encode(
         x="Spieltag:Q", y=alt.Y("Punkte:Q", scale=alt.Scale(type="log")), color="Name:N"
     )
@@ -76,7 +76,7 @@ placement_per_gameday_df = placement_per_gameday_df.reset_index().melt(
 )
 placement_per_gameday_chart = (
     alt.Chart(placement_per_gameday_df)
-    .mark_line(interpolate="basis")
+    .mark_line()
     .encode(
         x="Spieltag:Q",
         y=alt.Y("Platzierung:Q", scale=alt.Scale(reverse=True)),
