@@ -11,8 +11,8 @@ st.title("🏒 Hockey Punkte 🏒", anchor=False)
 players = [69707878, 69683358, 69662381]
 
 with st.status("Daten herunterladen..."):
-    current_gameday_df = current_gameday(players)
-    st.write("✅ Aktueller Spieltag")
+    # current_gameday_df = current_gameday(players)
+    # st.write("✅ Aktueller Spieltag")
     points_per_gameday_df_orig = total_scores(players=players, view="spieltagspunkte")
     st.write("✅ Punkte")
     gameday_placement_df = total_scores(players=players, view="spieltagsplatzierungen")
@@ -21,7 +21,8 @@ with st.status("Daten herunterladen..."):
     st.write("✅ Gesamtplatzierungen")
 
 st.subheader("Aktueller Spieltag", anchor=False)
-st.dataframe(current_gameday_df, hide_index=True)
+# st.dataframe(current_gameday_df, hide_index=True)
+st.write("🚧🚧🚧")
 
 st.subheader("Spieltagspunkte", anchor=False)
 points_per_gameday_df = points_per_gameday_df_orig.reset_index().melt(
